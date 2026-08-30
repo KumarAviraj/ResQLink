@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResQ Link | Emergency Response</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">R</div>
+            <div>
+                <h2>ResQ Link</h2>
+                <span>Emergency Network</span>
+            </div>
+        </div>
+
+        <nav>
+            <button class="nav-btn active" onclick="showPage('dashboard')">
+                📊 Dashboard
+            </button>
+
+            <button class="nav-btn" onclick="showPage('survivors')">
+                👥 Survivors
+            </button>
+
+            <button class="nav-btn" onclick="showPage('band')">
+                ⌚ Band Simulator
+            </button>
+        </nav>
+
+        <div class="system-status">
+            <div class="status-dot"></div>
+            <div>
+                <strong>System Online</strong>
+                <small>All services operational</small>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">EMERGENCY RESPONSE CENTER</p>
+                <h1 id="page-title">Rescue Dashboard</h1>
+            </div>
+
+            <div class="operator">
+                <div class="operator-avatar">RC</div>
+                <div>
+                    <strong>Rescue Center</strong>
+                    <small>Operator</small>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard" class="page active-page">
+
+            <div class="alert-banner">
+                <div class="alert-symbol">!</div>
+
+                <div>
+                    <strong>ResQ Link is monitoring active signals</strong>
+                    <p>
+                        Survivor alerts are automatically displayed here
+                        for rescue teams.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- STAT CARDS -->
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">👥</div>
+                    <div>
+                        <span>Survivors Detected</span>
+                        <strong id="survivor-count">3</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon red">🚨</div>
+                    <div>
+                        <span>Active Emergencies</span>
+                        <strong id="emergency-count">1</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">🍱</div>
+                    <div>
+                        <span>Food Alerts</span>
+                        <strong id="food-count">1</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">✓</div>
+                    <div>
+                        <span>Survivors Rescued</span>
+                        <strong id="rescued-count">1</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- ACTIVE INCIDENTS -->
+
+            <div class="section-header">
+                <div>
+                    <h2>Active Incidents</h2>
+                    <p>Real-time alerts received from ResQ Link devices</p>
+                </div>
+
+                <button class="refresh-btn" onclick="refreshDashboard()">
+                    ↻ Refresh
+                </button>
+            </div>
+
+
+            <div class="incident-grid">
+
+                <!-- SURVIVOR 1 -->
+
+                <div class="incident-card emergency">
+
+                    <div class="incident-top">
+                        <span class="badge danger">EMERGENCY</span>
+                        <span class="time">21:43</span>
+                    </div>
+
+                    <h3>RQ-1042</h3>
+
+                    <p class="location">📍 Sector 7 — Zone A</p>
+
+                    <div class="incident-details">
+
+                        <div>
+                            <span>Food</span>
+                            <strong class="danger-text">Required</strong>
+                        </div>
+
+                        <div>
+                            <span>Medical</span>
+                            <strong class="danger-text">Required</strong>
+                        </div>
+
+                    </div>
+
+                    <button class="primary-btn"
+                            onclick="openSurvivor('RQ-1042')">
+                        View Survivor
+                    </button>
+
+                </div>
+
+
+                <!-- SURVIVOR 2 -->
+
+                <div class="incident-card warning">
+
+                    <div class="incident-top">
+                        <span class="badge warning-badge">FOOD ALERT</span>
+                        <span class="time">21:31</span>
+                    </div>
+
+                    <h3>RQ-1098</h3>
+
+                    <p class="location">📍 Sector 4 — Zone B</p>
+
+                    <div class="incident-details">
+
+                        <div>
+                            <span>Food</span>
+                            <strong class="warning-text">Required</strong>
+                        </div>
+
+                        <div>
+                            <span>Medical</span>
+                            <strong>Stable</strong>
+                        </div>
+
+                    </div>
+
+                    <button class="secondary-btn"
+                            onclick="openSurvivor('RQ-1098')">
+                        View Survivor
+                    </button>
+
+                </div>
+
+
+                <!-- SURVIVOR 3 -->
+
+                <div class="incident-card safe">
+
+                    <div class="incident-top">
+                        <span class="badge success">RESCUED</span>
+                        <span class="time">20:58</span>
+                    </div>
+
+                    <h3>RQ-1101</h3>
+
+                    <p class="location">📍 Sector 2 — Zone C</p>
+
+                    <div class="incident-details">
+
+                        <div>
+                            <span>Food</span>
+                            <strong>Provided</strong>
+                        </div>
+
+                        <div>
+                            <span>Medical</span>
+                            <strong>Stable</strong>
+                        </div>
+
+                    </div>
+
+                    <button class="success-btn"
+                            onclick="openSurvivor('RQ-1101')">
+                        View Record
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SURVIVORS ================= -->
+
+        <section id="survivors" class="page">
+
+            <div class="section-header">
+                <div>
+                    <h2>Survivor Database</h2>
+                    <p>Information linked to registered ResQ Link devices</p>
+                </div>
+            </div>
+
+            <div id="survivor-list" class="survivor-list"></div>
+
+        </section>
+
+
+        <!-- ================= BAND SIMULATOR ================= -->
+
+        <section id="band" class="page">
+
+            <div class="band-layout">
+
+                <div class="band-description">
+
+                    <p class="eyebrow">PROTOTYPE MODE</p>
+
+                    <h2>ResQ Link Band Simulator</h2>
+
+                    <p>
+                        This digital simulator represents the signals that
+                        could be transmitted by the physical ResQ Link band.
+                    </p>
+
+                    <div class="simulation-note">
+                        💡 <strong>Demo:</strong>
+                        Press a button to simulate a signal being received
+                        by the rescue center.
+                    </div>
+
+                </div>
+
+
+                <div class="watch">
+
+                    <div class="watch-screen">
+
+                        <div class="watch-logo">
+                            RESQ
+                        </div>
+
+                        <div class="watch-status">
+                            ● CONNECTED
+                        </div>
+
+                        <div class="watch-id">
+                            RQ-1042
+                        </div>
+
+                    </div>
+
+
+                    <div class="watch-buttons">
+
+                        <button class="band-button emergency-button"
+                                onclick="simulateEmergency()">
+                            🆘 Emergency
+                        </button>
+
+                        <button class="band-button food-button"
+                                onclick="simulateFoodAlert()">
+                            🍱 Need Food
+                        </button>
+
+                        <button class="band-button location-button"
+                                onclick="simulateLocation()">
+                            📍 Send Location
+                        </button>
+
+                        <button class="band-button safe-button"
+                                onclick="simulateSafe()">
+                            🟢 I'm Safe
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SURVIVOR PROFILE MODAL ================= -->
+
+        <div id="survivor-modal" class="modal">
+
+            <div class="modal-content">
+
+                <button class="close-btn"
+                        onclick="closeModal()">×</button>
+
+                <p class="eyebrow">SURVIVOR PROFILE</p>
+
+                <h2 id="modal-id">RQ-1042</h2>
+
+                <div id="modal-status" class="modal-status danger">
+                    🔴 TRAPPED
+                </div>
+
+                <div class="profile-grid">
+
+                    <div class="profile-item">
+                        <span>Location</span>
+                        <strong id="modal-location">
+                            Sector 7 — Zone A
+                        </strong>
+                    </div>
+
+                    <div class="profile-item">
+                        <span>Last Signal</span>
+                        <strong id="modal-time">21:43</strong>
+                    </div>
+
+                    <div class="profile-item">
+                        <span>Food</span>
+                        <strong id="modal-food">Required</strong>
+                    </div>
+
+                    <div class="profile-item">
+                        <span>Medical</span>
+                        <strong id="modal-medical">
+                            Required
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="medical-box">
+
+                    <h3>Important Information</h3>
+
+                    <p>
+                        This prototype uses fictional data for demonstration.
+                    </p>
+
+                    <ul>
+                        <li>Emergency contact registered</li>
+                        <li>Basic medical information available</li>
+                        <li>Last device signal received successfully</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="rescue-actions">
+
+                    <button class="primary-btn"
+                            onclick="assignTeam()">
+                        🚑 Assign Rescue Team
+                    </button>
+
+                    <button class="success-btn"
+                            onclick="markRescued()">
+                        ✓ Mark as Rescued
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TOAST NOTIFICATION -->
+
+        <div id="toast" class="toast">
+            <strong id="toast-title">Alert</strong>
+            <p id="toast-message">Message</p>
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
